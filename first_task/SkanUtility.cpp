@@ -7,7 +7,7 @@ SkanUtility::SkanUtility(const char *directory) : _directory(directory), _errors
 _js_suspicious(0), _mac_suspicious(0), _unix_suspicious(0) {}
 
 
-void SkanUtility::_scan_file(const std::string &file_name)
+void SkanUtility::_scan_file(std::string file_name)
 {
 	std::ifstream file(file_name);
 	std::string str;
@@ -47,19 +47,28 @@ void SkanUtility::_print_report(size_t number_of_files)
 	"=========================" << std::endl;
 }
 
+void SkanUtility::f() {
+    std::cout << "KK" << std::endl;
+}
+
 void SkanUtility::sсan_directory()
 {
 	DIR *dir_stream;
 	struct dirent *entry;
 	size_t number_of_files = 0;
+	std::list<std::thread> threads;
 
 	if (!(dir_stream = opendir(_directory))) {
 		std::cout << "Can't open directory" << std::endl;
 		return ;
 	}
 	while ((entry = readdir(dir_stream))) {
-		_scan_file(entry->d_name);
+
+	    threads.push_back(std::thread(&SkanUtility::_scan_file, this, entry->d_name));
 		++number_of_files;
+	}
+	for (auto it = threads.begin(); it != threads.end(); ++it) {
+        (*it).join();
 	}
 	closedir(dir_stream);
 	_print_report(number_of_files);
