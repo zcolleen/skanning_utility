@@ -5,9 +5,9 @@ CC = clang++
 
 FLAGS = -Wall -Wextra -Werror --std=c++14
 
-HEADER = SkanUtility.hpp
+HEADER = ScanUtility.hpp
 
-SRCS = main.cpp SkanUtility.cpp
+SRCS = main.cpp ScanUtility.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

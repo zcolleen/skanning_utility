@@ -1,5 +1,5 @@
 
-#include "SkanUtility.hpp"
+#include "ScanUtility.hpp"
 
 
 int main(int argc, char **argv)
@@ -7,9 +7,9 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		std::cout << "Wrong number of arguments" << std::endl;
 	else {
-		SkanUtility skanUtility(argv[1]);
+		ScanUtility scanUtility(argv[1]);
 
-		skanUtility.sсan_directory();
+		scanUtility.sсan_directory();
 	}
 	return 0;
 }

@@ -1,7 +1,7 @@
 
 
-#ifndef KASPERSKY_TEST_SKANUTILITY_HPP
-#define KASPERSKY_TEST_SKANUTILITY_HPP
+#ifndef KASPERSKY_TEST_ScanUtility_HPP
+#define KASPERSKY_TEST_ScanUtility_HPP
 
 #include <iostream>
 #include <dirent.h>
@@ -16,7 +16,7 @@
 #define JS_EXTENSION "js"
 
 
-class SkanUtility
+class ScanUtility
 {
 
 private:
@@ -25,14 +25,14 @@ private:
     size_t _js_suspicious;
     size_t _mac_suspicious;
     size_t _unix_suspicious;
-	void f();
     void    _scan_file(std::string file_name, std::mutex &unix_mutex, std::mutex &mac_mutex, std::mutex &js_mutex,
                        std::mutex &error_mutex);
 	void	_print_report(size_t number_of_files);
     void    _write_data(std::mutex &mutex, size_t &data);
+    void    _put_time_in_str(std::string &exection_time_str, clock_t &exection_time);
 
 public:
-	SkanUtility(const char *directory);
+	ScanUtility(const char *directory);
 
 	void sсan_directory();
 
