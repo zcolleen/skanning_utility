@@ -8,7 +8,6 @@ int main(int argc, char **argv)
 		std::cout << "Wrong number of arguments" << std::endl;
 	else {
 		ScanUtility scanUtility(argv[1]);
-
 		scanUtility.sсan_directory();
 	}
 	return 0;
