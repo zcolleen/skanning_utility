@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o"
-  "CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o"
+  "CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o"
+  "CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o"
   "kaspersky_test"
   "kaspersky_test.pdb"
 )

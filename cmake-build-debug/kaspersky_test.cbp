@@ -80,13 +80,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/first_task/ScanUtility.cpp">
+		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/ScanUtility.cpp">
 			<Option target="kaspersky_test"/>
 		</Unit>
-		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/first_task/ScanUtility.hpp">
+		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/ScanUtility.hpp">
 			<Option target="kaspersky_test"/>
 		</Unit>
-		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/first_task/main.cpp">
+		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/main_utility.cpp">
 			<Option target="kaspersky_test"/>
 		</Unit>
 		<Unit filename="/Users/zcolleen/CLionProjects/kaspercky_test/CMakeLists.txt">

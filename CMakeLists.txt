@@ -3,4 +3,4 @@ project(kaspersky_test)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(kaspersky_test first_task/main.cpp first_task/ScanUtility.cpp first_task/ScanUtility.hpp)
+add_executable(kaspersky_test second_task/utility/ScanUtility.cpp second_task/utility/ScanUtility.hpp second_task/utility/main_utility.cpp)

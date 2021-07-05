@@ -76,42 +76,42 @@ include CMakeFiles/kaspersky_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/kaspersky_test.dir/flags.make
 
-CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o: CMakeFiles/kaspersky_test.dir/flags.make
-CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o: ../first_task/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o -c /Users/zcolleen/CLionProjects/kaspercky_test/first_task/main.cpp
+CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o: CMakeFiles/kaspersky_test.dir/flags.make
+CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o: ../second_task/utility/ScanUtility.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o -c /Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/ScanUtility.cpp
 
-CMakeFiles/kaspersky_test.dir/first_task/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kaspersky_test.dir/first_task/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zcolleen/CLionProjects/kaspercky_test/first_task/main.cpp > CMakeFiles/kaspersky_test.dir/first_task/main.cpp.i
+CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/ScanUtility.cpp > CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.i
 
-CMakeFiles/kaspersky_test.dir/first_task/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kaspersky_test.dir/first_task/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zcolleen/CLionProjects/kaspercky_test/first_task/main.cpp -o CMakeFiles/kaspersky_test.dir/first_task/main.cpp.s
+CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/ScanUtility.cpp -o CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.s
 
-CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o: CMakeFiles/kaspersky_test.dir/flags.make
-CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o: ../first_task/ScanUtility.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o -c /Users/zcolleen/CLionProjects/kaspercky_test/first_task/ScanUtility.cpp
+CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o: CMakeFiles/kaspersky_test.dir/flags.make
+CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o: ../second_task/utility/main_utility.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o -c /Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/main_utility.cpp
 
-CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zcolleen/CLionProjects/kaspercky_test/first_task/ScanUtility.cpp > CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.i
+CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/main_utility.cpp > CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.i
 
-CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zcolleen/CLionProjects/kaspercky_test/first_task/ScanUtility.cpp -o CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.s
+CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/main_utility.cpp -o CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.s
 
 # Object files for target kaspersky_test
 kaspersky_test_OBJECTS = \
-"CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o" \
-"CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o"
+"CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o" \
+"CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o"
 
 # External object files for target kaspersky_test
 kaspersky_test_EXTERNAL_OBJECTS =
 
-kaspersky_test: CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o
-kaspersky_test: CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o
+kaspersky_test: CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o
+kaspersky_test: CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o
 kaspersky_test: CMakeFiles/kaspersky_test.dir/build.make
 kaspersky_test: CMakeFiles/kaspersky_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable kaspersky_test"

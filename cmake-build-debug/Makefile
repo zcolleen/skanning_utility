@@ -142,59 +142,59 @@ kaspersky_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/build
 .PHONY : kaspersky_test/fast
 
-first_task/ScanUtility.o: first_task/ScanUtility.cpp.o
+second_task/utility/ScanUtility.o: second_task/utility/ScanUtility.cpp.o
 
-.PHONY : first_task/ScanUtility.o
-
-# target to build an object file
-first_task/ScanUtility.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o
-.PHONY : first_task/ScanUtility.cpp.o
-
-first_task/ScanUtility.i: first_task/ScanUtility.cpp.i
-
-.PHONY : first_task/ScanUtility.i
-
-# target to preprocess a source file
-first_task/ScanUtility.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.i
-.PHONY : first_task/ScanUtility.cpp.i
-
-first_task/ScanUtility.s: first_task/ScanUtility.cpp.s
-
-.PHONY : first_task/ScanUtility.s
-
-# target to generate assembly for a file
-first_task/ScanUtility.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.s
-.PHONY : first_task/ScanUtility.cpp.s
-
-first_task/main.o: first_task/main.cpp.o
-
-.PHONY : first_task/main.o
+.PHONY : second_task/utility/ScanUtility.o
 
 # target to build an object file
-first_task/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o
-.PHONY : first_task/main.cpp.o
+second_task/utility/ScanUtility.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o
+.PHONY : second_task/utility/ScanUtility.cpp.o
 
-first_task/main.i: first_task/main.cpp.i
+second_task/utility/ScanUtility.i: second_task/utility/ScanUtility.cpp.i
 
-.PHONY : first_task/main.i
+.PHONY : second_task/utility/ScanUtility.i
 
 # target to preprocess a source file
-first_task/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/first_task/main.cpp.i
-.PHONY : first_task/main.cpp.i
+second_task/utility/ScanUtility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.i
+.PHONY : second_task/utility/ScanUtility.cpp.i
 
-first_task/main.s: first_task/main.cpp.s
+second_task/utility/ScanUtility.s: second_task/utility/ScanUtility.cpp.s
 
-.PHONY : first_task/main.s
+.PHONY : second_task/utility/ScanUtility.s
 
 # target to generate assembly for a file
-first_task/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/first_task/main.cpp.s
-.PHONY : first_task/main.cpp.s
+second_task/utility/ScanUtility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.s
+.PHONY : second_task/utility/ScanUtility.cpp.s
+
+second_task/utility/main_utility.o: second_task/utility/main_utility.cpp.o
+
+.PHONY : second_task/utility/main_utility.o
+
+# target to build an object file
+second_task/utility/main_utility.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o
+.PHONY : second_task/utility/main_utility.cpp.o
+
+second_task/utility/main_utility.i: second_task/utility/main_utility.cpp.i
+
+.PHONY : second_task/utility/main_utility.i
+
+# target to preprocess a source file
+second_task/utility/main_utility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.i
+.PHONY : second_task/utility/main_utility.cpp.i
+
+second_task/utility/main_utility.s: second_task/utility/main_utility.cpp.s
+
+.PHONY : second_task/utility/main_utility.s
+
+# target to generate assembly for a file
+second_task/utility/main_utility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kaspersky_test.dir/build.make CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.s
+.PHONY : second_task/utility/main_utility.cpp.s
 
 # Help Target
 help:
@@ -205,12 +205,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... kaspersky_test"
-	@echo "... first_task/ScanUtility.o"
-	@echo "... first_task/ScanUtility.i"
-	@echo "... first_task/ScanUtility.s"
-	@echo "... first_task/main.o"
-	@echo "... first_task/main.i"
-	@echo "... first_task/main.s"
+	@echo "... second_task/utility/ScanUtility.o"
+	@echo "... second_task/utility/ScanUtility.i"
+	@echo "... second_task/utility/ScanUtility.s"
+	@echo "... second_task/utility/main_utility.o"
+	@echo "... second_task/utility/main_utility.i"
+	@echo "... second_task/utility/main_utility.s"
 .PHONY : help
 
 

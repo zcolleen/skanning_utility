@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/zcolleen/CLionProjects/kaspercky_test/first_task/ScanUtility.cpp" "/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles/kaspersky_test.dir/first_task/ScanUtility.cpp.o"
-  "/Users/zcolleen/CLionProjects/kaspercky_test/first_task/main.cpp" "/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles/kaspersky_test.dir/first_task/main.cpp.o"
+  "/Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/ScanUtility.cpp" "/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles/kaspersky_test.dir/second_task/utility/ScanUtility.cpp.o"
+  "/Users/zcolleen/CLionProjects/kaspercky_test/second_task/utility/main_utility.cpp" "/Users/zcolleen/CLionProjects/kaspercky_test/cmake-build-debug/CMakeFiles/kaspersky_test.dir/second_task/utility/main_utility.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
