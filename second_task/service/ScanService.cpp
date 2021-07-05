@@ -1,7 +1,9 @@
 
 #include "ScanService.hpp"
 
-ScanService::ScanService() : _errors(0), _js_suspicious(0), _mac_suspicious(0), _unix_suspicious(0) {}
+ScanService::ScanService() : _errors(0), _js_suspicious(0), _mac_suspicious(0), _unix_suspicious(0) {
+    bzero(_directory, sizeof _directory);
+}
 
 ScanService::~ScanService() = default;
 
@@ -15,7 +17,8 @@ void ScanService::_write_data(std::mutex &mutex, size_t &data)
 void ScanService::_scan_file(std::string file_name, std::mutex &unix_mutex, std::mutex &mac_mutex, std::mutex &js_mutex,
 							 std::mutex &error_mutex)
 {
-	std::ifstream file(file_name);
+    std::string absolute_file_name = std::string(_directory) + "/" + file_name;
+	std::ifstream file(absolute_file_name);
 	std::string str;
 
 	if (file.is_open()) {
@@ -42,7 +45,7 @@ void ScanService::_scan_file(std::string file_name, std::mutex &unix_mutex, std:
     }
 }
 
-ssize_t ScanService::_sсan_directory(const char *directory, int client_fd)
+ssize_t ScanService::_sсan_directory(int client_fd)
 {
 	DIR *dir_stream;
 	struct dirent *entry;
@@ -54,7 +57,7 @@ ssize_t ScanService::_sсan_directory(const char *directory, int client_fd)
 	std::mutex error_mutex;
 
 
-	if (!(dir_stream = opendir(directory))) {
+	if (!(dir_stream = opendir(_directory))) {
 		send(client_fd, DIRECTORY_ERROR, std::strlen(DIRECTORY_ERROR), 0);
 		return -1;
 	}
@@ -82,54 +85,55 @@ void ScanService::_clear()
 	_mac_suspicious = 0;
 	_js_suspicious = 0;
 	_errors = 0;
-}
-
-void ScanService::_read_directory(int client_fd)
-{
-	char buffer[256];
-	bzero(buffer, sizeof buffer);
-	ssize_t number_of_files;
-
-	if (recv(client_fd, buffer, sizeof buffer, 0) <= 0)
-		return;
-	if ((number_of_files = _sсan_directory(buffer, client_fd)) < 0)
-		return;
-	 _send_report(number_of_files, client_fd);
-	_clear();
+    bzero(_directory, sizeof _directory);
 }
 
 void ScanService::_put_time_in_str(std::string &exection_time_str, clock_t &exection_time) {
 
-	clock_t time = exection_time % 60;
-	if (time > 9)
-		exection_time_str += std::to_string(time);
-	else
-		exection_time_str += "0" + std::to_string(time);
-	exection_time /= 60;
+    clock_t time = exection_time % 60;
+    if (time > 9)
+        exection_time_str += std::to_string(time);
+    else
+        exection_time_str += "0" + std::to_string(time);
+    exection_time /= 60;
 }
 
-void ScanService::_send_report(size_t number_of_files, int client_fd)
+void ScanService::_send_report(size_t number_of_files, int client_fd, size_t exec_start_time)
 {
     std::stringstream stringstream;
-	std::string exection_time_str;
-	clock_t exection_time = clock() / CLOCKS_PER_SEC;
+    std::string exection_time_str;
+    size_t exection_time = clock() / CLOCKS_PER_SEC - exec_start_time;
 
-	_put_time_in_str(exection_time_str, exection_time);
-	exection_time_str += ":";
-	_put_time_in_str(exection_time_str, exection_time);
-	exection_time_str += ":";
-	_put_time_in_str(exection_time_str, exection_time);
+    _put_time_in_str(exection_time_str, exection_time);
+    exection_time_str += ":";
+    _put_time_in_str(exection_time_str, exection_time);
+    exection_time_str += ":";
+    _put_time_in_str(exection_time_str, exection_time);
 
-	stringstream << "====== Scan result ======" << std::endl <<
-			  "Processed files: " << number_of_files << std::endl <<
-			  "JS detects: " << _js_suspicious << std::endl <<
-			  "Unix detects: " << _unix_suspicious << std::endl <<
-			  "macOS detects: " << _mac_suspicious << std::endl <<
-			  "Errors: " << _errors << std::endl <<
-			  "Exection time: " << exection_time_str << std::endl <<
-			  "=========================" << std::endl;
-	std::string report(stringstream.str());
+    stringstream << "====== Scan result ======" << std::endl <<
+                 "Processed files: " << number_of_files << std::endl <<
+                 "JS detects: " << _js_suspicious << std::endl <<
+                 "Unix detects: " << _unix_suspicious << std::endl <<
+                 "macOS detects: " << _mac_suspicious << std::endl <<
+                 "Errors: " << _errors << std::endl <<
+                 "Exection time: " << exection_time_str << std::endl <<
+                 "=========================" << std::endl;
+    std::string report(stringstream.str());
     send(client_fd, report.c_str(), report.size(), 0);
+}
+
+void ScanService::_read_directory(int client_fd)
+{
+	ssize_t number_of_files;
+	size_t exec_start_time;
+
+	if (recv(client_fd, _directory, sizeof _directory, 0) <= 0)
+		return;
+	exec_start_time = clock() / CLOCKS_PER_SEC;
+	if ((number_of_files = _sсan_directory(client_fd)) < 0)
+		return;
+	 _send_report(number_of_files, client_fd, exec_start_time);
+	_clear();
 }
 
 [[noreturn]] void ScanService::start_service()

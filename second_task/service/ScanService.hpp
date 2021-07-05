@@ -27,16 +27,17 @@ class ScanService
 {
 private:
 
+    char        _directory[256];
 	size_t 		_errors;
 	size_t 		_js_suspicious;
 	size_t 		_mac_suspicious;
 	size_t 		_unix_suspicious;
 	void    	_scan_file(std::string file_name, std::mutex &unix_mutex, std::mutex &mac_mutex, std::mutex &js_mutex,
 					   std::mutex &error_mutex);
-	void		_send_report(size_t number_of_files, int client_fd);
+	void		_send_report(size_t number_of_files, int client_fd, size_t exec_start_time);
 	void    	_write_data(std::mutex &mutex, size_t &data);
 	void    	_put_time_in_str(std::string &exection_time_str, clock_t &exection_time);
-	ssize_t 	_sсan_directory(const char *directory, int client_fd);
+	ssize_t 	_sсan_directory(int client_fd);
 	void		_read_directory(int client_fd);
 	void		_exit_failure();
 	void		_clear();
