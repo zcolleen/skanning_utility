@@ -1,10 +1,9 @@
 
-
 #include "ScanService.hpp"
-
 
 ScanService::ScanService() : _errors(0), _js_suspicious(0), _mac_suspicious(0), _unix_suspicious(0) {}
 
+ScanService::~ScanService() = default;
 
 void ScanService::_write_data(std::mutex &mutex, size_t &data)
 {
@@ -42,7 +41,7 @@ void ScanService::_scan_file(std::string file_name, std::mutex &unix_mutex, std:
 		_write_data(error_mutex, this->_errors);
 }
 
-void ScanService::_sсan_directory(const char *directory)
+ssize_t ScanService::_sсan_directory(const char *directory, int client_fd)
 {
 	DIR *dir_stream;
 	struct dirent *entry;
@@ -55,8 +54,8 @@ void ScanService::_sсan_directory(const char *directory)
 
 
 	if (!(dir_stream = opendir(directory))) {
-		std::cout << "Can't open directory" << std::endl;
-		return ;
+		send(client_fd, DIRECTORY_ERROR, std::strlen(DIRECTORY_ERROR), 0);
+		return -1;
 	}
 	while ((entry = readdir(dir_stream))) {
 
@@ -67,53 +66,89 @@ void ScanService::_sсan_directory(const char *directory)
 	for (auto it = threads.begin(); it != threads.end(); ++it)
 		(*it).join();
 	closedir(dir_stream);
+	return number_of_files;
 }
 
 void ScanService::_exit_failure()
 {
-	std::cout << "Can't start service" << std::endl;
+	std::cout << SERVICE_ERROR << std::endl;
 	exit(EXIT_FAILURE);
+}
+
+void ScanService::_clear()
+{
+	_unix_suspicious = 0;
+	_mac_suspicious = 0;
+	_js_suspicious = 0;
+	_errors = 0;
 }
 
 void ScanService::_read_directory(int client_fd)
 {
 	char buffer[256];
 	bzero(buffer, sizeof buffer);
+	ssize_t number_of_files;
 
 	if (recv(client_fd, buffer, sizeof buffer, 0) <= 0)
 		return;
-	_sсan_directory(buffer);
+	if ((number_of_files = _sсan_directory(buffer, client_fd)) < 0)
+		return;
+	// _send_report(number_of_files);
+	_clear();
 }
 
-void ScanService::_signal_listener(int signal)
+void ScanService::_put_time_in_str(std::string &exection_time_str, clock_t &exection_time) {
+
+	clock_t time = exection_time % 60;
+	if (time > 9)
+		exection_time_str += std::to_string(time);
+	else
+		exection_time_str += "0" + std::to_string(time);
+	exection_time /= 60;
+}
+
+void ScanService::_send_report(size_t number_of_files)
 {
-	if (signal == SIGINT) {
-		shutdown(_socket_fd, SHUT_RDWR);
-		close(_socket_fd);
-		exit(0);
-	}
+	std::string exection_time_str;
+	clock_t exection_time = clock() / CLOCKS_PER_SEC;
+
+	_put_time_in_str(exection_time_str, exection_time);
+	exection_time_str += ":";
+	_put_time_in_str(exection_time_str, exection_time);
+	exection_time_str += ":";
+	_put_time_in_str(exection_time_str, exection_time);
+
+	std::cout << "====== Scan result ======" << std::endl <<
+			  "Processed files: " << number_of_files << std::endl <<
+			  "JS detects: " << _js_suspicious << std::endl <<
+			  "Unix detects: " << _unix_suspicious << std::endl <<
+			  "macOS detects: " << _mac_suspicious << std::endl <<
+			  "Errors: " << _errors << std::endl <<
+			  "Exection time: " << exection_time_str << std::endl <<
+			  "=========================" << std::endl;
 }
 
 [[noreturn]] void ScanService::start_service()
 {
+	int socket_fd;
 	struct sockaddr_in addr;
 	int client_fd;
+	const int optval = 1;
 
-	signal(SIGINT, _signal_listener);
-	_socket_fd = socket(AF_INET, SOCK_STREAM, 0);
-	if (_socket_fd < 0)
+	if ((socket_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0 || (setsockopt(socket_fd,
+		SOL_SOCKET, SO_REUSEADDR, (void *) &optval, sizeof optval)))
 		_exit_failure();
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(LISTENING_PORT);
 	addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);
-	if (bind(_socket_fd, (const struct sockaddr*)&addr, sizeof addr) ||
-			listen(_socket_fd, SOMAXCONN))
+	if (bind(socket_fd, (const struct sockaddr*)&addr, sizeof addr) ||
+			listen(socket_fd, SOMAXCONN))
 		_exit_failure();
 	socklen_t addrlen = sizeof addr;
 	std::cout << "Service has started" << std::endl;
 	while (true)
 	{
-		client_fd = accept(_socket_fd, (struct sockaddr*)&addr, &addrlen);
+		client_fd = accept(socket_fd, (struct sockaddr*)&addr, &addrlen);
 		_read_directory(client_fd);
 		shutdown(client_fd, SHUT_RDWR);
 		close(client_fd);
